@@ -23,7 +23,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/", routes);
 
 app.get("/", (req, res) => {
-    res.send("!!! NODEJS GATEWAY API PLAYGROUND !!!");
+    res.send("!!! NODEJS MONGODB BACKEND API PLAYGROUND !!!");
 });
 
 app.listen(process.env.PORT, () => {
