@@ -2,7 +2,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import express from "express";
 import useragent from "express-useragent";
-import helmet from "helmet"
+import helmet from "helmet";
 
 import routes from "./routes/index.js";
 
