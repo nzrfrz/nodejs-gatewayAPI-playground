@@ -2,13 +2,11 @@
     {
         "service": "auth",
         "BASE_PATH": "https://zrghstd-auth-api.herokuapp.com",
-        "LOCAL_BASE_PATH": "http://localhost:8000",
-        "HOST": "zrghstd-auth-api.herokuapp.com"
+        "LOCAL_BASE_PATH": "http://localhost:8000"
     },
     {
         "service": "playground",
         "BASE_PATH": "https://zrghstd-api-playground.herokuapp.com",
-        "LOCAL_BASE_PATH": "http://localhost:8001",
-        "HOST": "zrghstd-api-playground.herokuapp.com"
+        "LOCAL_BASE_PATH": "http://localhost:8001"
     }
 ]
