@@ -10,9 +10,9 @@ const REGISTRY = JSON.parse(
 
 routes.all("/:serviceName/:path(*)?", async (req, res) => {
     const serviceData = REGISTRY.filter((data) => data.service === req.params.serviceName);
-    await axios({
+    axios({
         method: req.method,
-        baseURL: `${serviceData[0].BASE_PATH}/${req.params.serviceName}/${req.params.path}`,
+        baseURL: `${req.headers.host.includes("localhost") ? serviceData[0].LOCAL_BASE_PATH : serviceData[0].BASE_PATH}/${req.params.serviceName}/${req.params.path}`,
         headers: {
             authorization: req.headers.authorization || null,
             browser: req.useragent.browser,
@@ -23,12 +23,12 @@ routes.all("/:serviceName/:path(*)?", async (req, res) => {
         data: req.body
     })
     .then((results) => {
-        res.status(results.data.status).send(results.data);
-        console.log(results.data);
+        console.log(results);
+        res.status(results.data.status).send(results.data.data);
     })
     .catch((error) => {
-        console.log(error.response)
-        res.status(error.response.data.status || error.response.status).send(error.response.data);
+        console.log(error.response.status);
+        res.status(error.response.status).send(error.response.data);
     })
 });
 
