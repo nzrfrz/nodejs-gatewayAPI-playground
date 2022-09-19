@@ -30,7 +30,7 @@ routes.all("/:serviceName/:path(*)?", async (req, res) => {
             res.status(error.response.data.status).send(error.response.data);
         })
     } catch(error) {
-        res.send(error);
+        res.status(503).send(error);
     }
 });
 
