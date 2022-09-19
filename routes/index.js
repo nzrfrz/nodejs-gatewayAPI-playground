@@ -24,10 +24,10 @@ routes.all("/:serviceName/:path(*)?", async (req, res) => {
     })
     .then((results) => {
         res.status(results.data.status).send(results.data);
-        console.log(results);
+        console.log(results.data);
     })
     .catch((error) => {
-        console.log(error)
+        console.log(error.response)
         res.status(error.response.data.status || error.response.status).send(error.response.data);
     })
 });
