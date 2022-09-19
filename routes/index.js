@@ -23,11 +23,9 @@ routes.all("/:serviceName/:path(*)?", async (req, res) => {
         data: req.body
     })
     .then((results) => {
-        console.log(results);
         res.status(results.data.status).send(results.data.data);
     })
     .catch((error) => {
-        console.log(error.response.status);
         res.status(error.response.status).send(error.response.data);
     })
 });
