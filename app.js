@@ -18,12 +18,13 @@ app.use(helmet());
 app.use(express.json());
 app.use(cors(corsOptions));
 app.use(useragent.express());
+app.use(express.static("_temporary"));
 app.use(express.urlencoded({ extended: true }));
 
 app.use("/", routes);
 
 app.get("/", (req, res) => {
-    res.send("!!! NODEJS MONGODB BACKEND API PLAYGROUND !!!");
+    res.status(200).send({message: "!!! NODEJS MONGODB BACKEND API PLAYGROUND !!!"});
 });
 
 app.listen(process.env.PORT, () => {
