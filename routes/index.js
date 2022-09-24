@@ -21,16 +21,14 @@ routes.all("/:serviceName/:path(*)?", upload.single("file"), async (req, res) =>
         let formData = new FormData();
         formData.append("file", Readable.from(req.file.buffer), req.file.originalname);
         try {
-            const results = await axios.post(`${req.headers.host.includes("localhost") ? serviceData[0].LOCAL_BASE_PATH : serviceData[0].BASE_PATH}/${req.params.serviceName}/${req.params.path}`, formData, {
-                headers: {
-                    ...formData.getHeaders(),
-                }
-            });
+            const results = await axios.post(`${req.headers.host.includes("localhost") ? serviceData[0].LOCAL_BASE_PATH : serviceData[0].BASE_PATH}/${req.params.serviceName}/${req.params.path}`, formData);
             res.status(results.data.status).send(results.data);
+            // res.status(200).send({message: "LOGGING SUCCESS"});
             // console.log(results);
         } catch (error) {
             // console.log(error);
             res.status(error.response.status).send(error.response.data);
+            // res.status(400).send({message: "LOGGING ERROR"});
         }
     } else {
         await axios({
