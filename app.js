@@ -18,7 +18,6 @@ app.use(helmet());
 app.use(express.json());
 app.use(cors(corsOptions));
 app.use(useragent.express());
-app.use(express.static("_temporary"));
 app.use(express.urlencoded({ extended: true }));
 
 app.use("/", routes);
